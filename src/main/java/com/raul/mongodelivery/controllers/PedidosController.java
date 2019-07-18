@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,6 +29,7 @@ import com.raul.mongodelivery.services.ServiceProductos;
 import com.raul.mongodelivery.services.ServiceUsuarios;
 
 @RestController
+@CrossOrigin
 public class PedidosController {
 	
 	private static final String ROLE_USER = "ROLE_USER";
