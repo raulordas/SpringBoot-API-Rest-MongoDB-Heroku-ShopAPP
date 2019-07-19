@@ -48,8 +48,20 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
     public CorsConfigurationSource corsConfigurationSource() {
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
-        config.applyPermitDefaultValues();
+        //config.applyPermitDefaultValues();
+        
         config.setAllowCredentials(true);
+        List<String> methods = new ArrayList<>();
+        methods.add("GET");
+        methods.add("POST");
+        methods.add("PUT");
+        methods.add("DELETE");
+        methods.add("PATCH");
+        methods.add("OPTIONS");
+        config.setAllowedMethods(methods);
+        List<String> origins = new ArrayList<>();
+        origins.add("*");
+        config.setAllowedOrigins(origins);
         List<String> lista = new ArrayList<>();
         lista.add("Authorization");
         lista.add("Cache-Control");
