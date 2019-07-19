@@ -49,24 +49,18 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         //config.applyPermitDefaultValues();
-        
         config.setAllowCredentials(true);
-        List<String> methods = new ArrayList<>();
-        methods.add("GET");
-        methods.add("POST");
-        methods.add("PUT");
-        methods.add("DELETE");
-        methods.add("PATCH");
-        methods.add("OPTIONS");
-        config.setAllowedMethods(methods);
-        List<String> origins = new ArrayList<>();
-        origins.add("*");
-        config.setAllowedOrigins(origins);
-        List<String> lista = new ArrayList<>();
-        lista.add("Authorization");
-        lista.add("Cache-Control");
-        lista.add("Content-Type");
-        config.setAllowedHeaders(lista);
+        config.addAllowedMethod(HttpMethod.GET);
+        config.addAllowedMethod(HttpMethod.POST);
+        config.addAllowedMethod(HttpMethod.PUT);
+        config.addAllowedMethod(HttpMethod.DELETE);
+        config.addAllowedMethod(HttpMethod.PATCH);
+        config.addAllowedMethod(HttpMethod.OPTIONS);
+        config.addAllowedOrigin("*");
+        config.addAllowedHeader("Authorization");
+        config.addAllowedHeader("Cache-Control");
+        config.addAllowedHeader("Content-Type");
+        
         source.registerCorsConfiguration("/**", config);
 
         return source;
