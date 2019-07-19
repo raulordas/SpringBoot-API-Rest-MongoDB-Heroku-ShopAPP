@@ -25,7 +25,7 @@ import com.raul.mongodelivery.services.ServiceUsuarios;
 
 @RestController
 @RequestMapping(path="/usuarios")
-//@CrossOrigin
+@CrossOrigin(allowCredentials="true")
 public class UsuariosController {
 	
 	private static final String ROLE_USER = "ROLE_USER";
