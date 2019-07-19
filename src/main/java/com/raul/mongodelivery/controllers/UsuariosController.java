@@ -53,6 +53,14 @@ public class UsuariosController {
 		return new ResponseEntity<Usuario>(userResult, HttpStatus.OK);	
 	}
 	
+	@Secured({ROLE_COMERCIO, ROLE_USER})
+	@GetMapping(path="/login")
+	public ResponseEntity<Usuario> loginCliente() {
+		String username = checkUsername();
+		
+		return new ResponseEntity<Usuario>(serviceUsuarios.findUsuarioByUsername(username), HttpStatus.OK);
+	}
+	
 	@PostMapping(path="/signup")
 	public ResponseEntity<Usuario> signUpCliente(@RequestBody @Valid Usuario usuario, @RequestParam(required=true) String rol) {
 		usuario.setAuthorities(null);
