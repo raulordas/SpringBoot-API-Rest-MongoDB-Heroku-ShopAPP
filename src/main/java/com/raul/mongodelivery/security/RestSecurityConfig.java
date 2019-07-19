@@ -1,5 +1,11 @@
 package com.raul.mongodelivery.security;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -44,6 +50,11 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
         CorsConfiguration config = new CorsConfiguration();
         config.applyPermitDefaultValues();
         config.setAllowCredentials(true);
+        List<String> lista = new ArrayList<>();
+        lista.add("Authorization");
+        lista.add("Cache-Control");
+        lista.add("Content-Type");
+        config.setAllowedHeaders(lista);
         source.registerCorsConfiguration("/**", config);
 
         return source;
